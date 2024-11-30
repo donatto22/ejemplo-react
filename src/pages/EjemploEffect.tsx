@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Cafe from '../shared/components/Cafe'
 import { Link } from 'react-router-dom'
+import BaseLayout from '../layout/BaseLayout'
 
 type Cafe = {
     available: boolean
@@ -31,17 +32,17 @@ const EjemploEffect = () => {
     }, [])
 
     return (
-        <>
+        <BaseLayout>
             <div>EjemploEffect</div>
             <Link to='/'>Home</Link>
             {
                 // Prop-drilling - contexto - hooks personalizados
                 cafes.map((cafe) => (
-                    <Cafe key={cafe.id} cafeName={cafe.name} imageSrc={cafe.image} />
+                    <Cafe key={cafe.id} cafeId={cafe.id} cafeName={cafe.name} imageSrc={cafe.image} />
                 ))
             }
             <div> Comprar </div>
-        </>
+        </BaseLayout>
     )
 }
 

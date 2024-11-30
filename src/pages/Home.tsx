@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import BaseLayout from '../layout/BaseLayout'
 
 const Home = () => {
     // toda la logica
@@ -12,7 +13,7 @@ const Home = () => {
     }
 
     return (
-        <>
+        <BaseLayout>
             <div>Contador: {contador} </div>
             <div>Multiplicador: {multiplicador} </div>
             <div>Es Par?: {esPar ? 'Si' : 'No'} </div>
@@ -32,7 +33,7 @@ const Home = () => {
             <hr />
 
             <Link to='/useffect'>Cafes</Link>
-        </>
+        </BaseLayout>
     )
 }
 

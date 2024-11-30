@@ -1,0 +1,15 @@
+#cardCafe {
+    font-family: 'Candara';
+    background-color: bisque;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+#cardCafe img {
+    border-radius: 10px;
+}
