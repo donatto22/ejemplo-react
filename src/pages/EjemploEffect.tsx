@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Cafe from '../shared/components/Cafe'
 import { Link } from 'react-router-dom'
 import BaseLayout from '../layout/BaseLayout'
+import { toast } from 'sonner'
 
 type Cafe = {
     available: boolean
@@ -21,10 +22,15 @@ const EjemploEffect = () => {
     const [cafes, setCafes] = useState<Array<Cafe>>([])
 
     const traerCafes = async () => {
-        const response = await fetch(API_CAFES)
-        const data = await response.json()
-        console.log(data)
-        setCafes(data)
+        try {
+            const response = await fetch(API_CAFES)
+            const data = await response.json()
+            setCafes(data)
+
+            toast.success('Cafes Cargados')
+        } catch (error) {
+            toast.error('No se logró obtener los cafes')
+        }
     }
 
     useEffect(() => {
@@ -41,7 +47,6 @@ const EjemploEffect = () => {
                     <Cafe key={cafe.id} cafeId={cafe.id} cafeName={cafe.name} imageSrc={cafe.image} />
                 ))
             }
-            <div> Comprar </div>
         </BaseLayout>
     )
 }

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import './plantillaCafe.css'
+import { toast } from 'sonner'
+import BaseLayout from '../layout/BaseLayout'
 
 type Cafe = {
     available: boolean
@@ -33,7 +35,7 @@ const PlantillaCafe = () => {
     }, [])
 
     return (
-        <>
+        <BaseLayout>
             <div id='cardCafe'>
                 {
                     cafe &&
@@ -41,13 +43,13 @@ const PlantillaCafe = () => {
                         <img src={cafe.image} alt={cafe.name} />
                         <h1>{cafe.name}</h1>
                         <h3>{cafe.price}</h3>
-                        <button>Comprar</button>
+                        <button onClick={() => toast.success('Agregado al carrito')}>Comprar</button>
                     </>
                 }
             </div>
 
             <Link to='/useffect'>Volver a la lista de cafes</Link>
-        </>
+        </BaseLayout>
     )
 }
 
